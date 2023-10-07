@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Patch} from '@nestjs/common';
 import PhoneService from './phone.service';
 import CreatePhoneDto from './dto/createPhone.dto';
 import UpdatePhoneDto from './dto/updatePhone.dto';
@@ -27,6 +27,11 @@ export default class PhonesController {
   @Put(':id')
   async replacePhone(@Param('id') id: string, @Body() phone: UpdatePhoneDto) {
     return this.phoneService.replacePhone(Number(id), phone);
+  }
+
+  @Patch(':id')
+  async updatePhone(@Param('id') id: string, @Body() phone: UpdatePhoneDto) {
+    return this.phoneService.updatePhone(Number(id), phone);
   }
  
   @Delete(':id')

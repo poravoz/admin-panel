@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import Phone from './interface/phone.interface';
-import UpdatePostDto from './dto/updatePhone.dto';
+import UpdatePhoneDto from './dto/updatePhone.dto';
  
 @Injectable()
 export default class PhonesService {
@@ -19,7 +19,7 @@ export default class PhonesService {
     throw new HttpException('Phone not found', HttpStatus.NOT_FOUND);
   }
  
-  replacePhone(id: number, phone: UpdatePostDto) {
+  replacePhone(id: number, phone: UpdatePhoneDto) {
     const phoneIndex = this.phones.findIndex(phone => phone.id === id);
     if (phoneIndex > -1) {
       this.phones[phoneIndex] = phone;
@@ -44,5 +44,14 @@ export default class PhonesService {
     } else {
       throw new HttpException('Phone not found', HttpStatus.NOT_FOUND);
     }
+  }
+
+  updatePhone(id: number, phone: UpdatePhoneDto) {
+    const phoneIndex = this.phones.findIndex(p => p.id === id);
+    if (phoneIndex > -1) {
+      this.phones[phoneIndex] = { ...this.phones[phoneIndex], ...phone };
+      return this.phones[phoneIndex];
+    }
+    throw new HttpException('Phone not found', HttpStatus.NOT_FOUND);
   }
 }
