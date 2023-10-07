@@ -5,11 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
  
 @Injectable()
 export default class PhonesService {
-  private lastPhoneId = 0;
   private phones: Phone[] = [];
  
   getAllPhones() {
-    return this.phones;
+    return this.phones.slice().sort((a, b) => a.price - b.price);
   }
  
   getPhoneById(id: string) {
