@@ -3,5 +3,6 @@ export default interface Phone {
     name: string;
     description: string;
     price: number;
+    date_added: Date;
   }
 

@@ -3,6 +3,7 @@ class UpdatePhoneDto {
     name: string;
     description: string;
     price: number;
+    date_added: Date;
   }
 
 export default UpdatePhoneDto;

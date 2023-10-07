@@ -3,4 +3,5 @@ export default class CreatePhoneDto {
     name: string;
     description: string;
     price: number;
+    date_added: Date;
 }
