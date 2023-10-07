@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Patch} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Patch} from '@nestjs/common';
 import PhoneService from './phone.service';
 import CreatePhoneDto from './dto/createPhone.dto';
 import UpdatePhoneDto from './dto/updatePhone.dto';
