@@ -1,8 +1,6 @@
-class CreatePhoneDto {
-    id: string;
+export default class CreatePhoneDto {
+    id: number;
     name: string;
     description: string;
     price: number;
 }
-
-export default CreatePhoneDto;

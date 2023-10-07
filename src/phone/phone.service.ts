@@ -3,7 +3,7 @@ import Phone from './interface/phone.interface';
 import UpdatePostDto from './dto/updatePhone.dto';
  
 @Injectable()
-export default class PhoneService {
+export default class PhonesService {
   private lastPhoneId = 0;
   private phones: Phone[] = [];
  
@@ -11,7 +11,7 @@ export default class PhoneService {
     return this.phones;
   }
  
-  getPhonesById(id: number) {
+  getPhoneById(id: number) {
     const phone = this.phones.find(phone => phone.id === id);
     if (phone) {
       return phone;
