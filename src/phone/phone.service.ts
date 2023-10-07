@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import Phone from './interface/phone.interface';
 import UpdatePhoneDto from './dto/updatePhone.dto';
+import { v4 as uuidv4 } from 'uuid';
  
 @Injectable()
 export default class PhonesService {
@@ -11,7 +12,7 @@ export default class PhonesService {
     return this.phones;
   }
  
-  getPhoneById(id: number) {
+  getPhoneById(id: string) {
     const phone = this.phones.find(phone => phone.id === id);
     if (phone) {
       return phone;
@@ -21,14 +22,14 @@ export default class PhonesService {
  
   createPhone(phone: Phone) {
     const newPhone = {
-      id: ++this.lastPhoneId,
+      id: uuidv4(),
       ...phone
     }
     this.phones.push(newPhone);
     return newPhone;
   }
  
-  deletePhone(id: number) {
+  deletePhone(id: string) {
     const phoneIndex = this.phones.findIndex(phone => phone.id === id);
     if (phoneIndex > -1) {
       this.phones.splice(phoneIndex, 1);
@@ -37,7 +38,7 @@ export default class PhonesService {
     }
   }
 
-  updatePhone(id: number, phone: UpdatePhoneDto) {
+  updatePhone(id: string, phone: UpdatePhoneDto) {
     const phoneIndex = this.phones.findIndex(p => p.id === id);
     if (phoneIndex > -1) {
       this.phones[phoneIndex] = { ...this.phones[phoneIndex], ...phone };

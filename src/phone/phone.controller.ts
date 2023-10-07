@@ -16,7 +16,7 @@ export default class PhonesController {
  
   @Get(':id')
   getPhoneById(@Param('id') id: string) {
-    return this.phoneService.getPhoneById(Number(id));
+    return this.phoneService.getPhoneById(id);
   }
  
   @Post()
@@ -26,11 +26,11 @@ export default class PhonesController {
 
   @Patch(':id')
   async updatePhone(@Param('id') id: string, @Body() phone: UpdatePhoneDto) {
-    return this.phoneService.updatePhone(Number(id), phone);
+    return this.phoneService.updatePhone(id, phone);
   }
  
   @Delete(':id')
   async deletePhone(@Param('id') id: string) {
-    this.phoneService.deletePhone(Number(id));
+    this.phoneService.deletePhone(id);
   }
 }

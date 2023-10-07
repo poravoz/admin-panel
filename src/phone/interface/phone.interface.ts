@@ -1,5 +1,5 @@
 export default interface Phone {
-    id: number;
+    id: string;
     name: string;
     description: string;
     price: number;

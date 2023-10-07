@@ -1,5 +1,5 @@
 export default class CreatePhoneDto {
-    id: number;
+    id: string;
     name: string;
     description: string;
     price: number;
