@@ -23,7 +23,7 @@ export default class PhonesService {
   createPhone(phone: Phone) {
     const newPhone = {
       id: uuidv4(),
-      date_added: format (new Date(), 'yyyy-MM-dd HH:mm'),
+      date_added: format (new Date(), 'yyyy-MM-dd'),
       ...phone
     }
     this.phones.push(newPhone);
