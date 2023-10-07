@@ -1,7 +1,8 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import {HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import Phone from './interface/phone.interface';
 import UpdatePhoneDto from './dto/updatePhone.dto';
 import { v4 as uuidv4 } from 'uuid';
+import { format } from 'date-fns';
  
 @Injectable()
 export default class PhonesService {
@@ -22,7 +23,7 @@ export default class PhonesService {
   createPhone(phone: Phone) {
     const newPhone = {
       id: uuidv4(),
-      date_added: new Date(),
+      date_added: format (new Date(), 'yyyy-MM-dd HH:mm'),
       ...phone
     }
     this.phones.push(newPhone);
