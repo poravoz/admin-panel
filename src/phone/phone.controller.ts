@@ -32,5 +32,6 @@ export default class PhonesController {
   @Delete(':id')
   async deletePhone(@Param('id') id: string) {
     this.phoneService.deletePhone(id);
+    return "Phone is deleted";
   }
 }
