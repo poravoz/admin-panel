@@ -23,11 +23,6 @@ export default class PhonesController {
   async createPhone(@Body() phone: CreatePhoneDto) {
     return this.phoneService.createPhone(phone);
   }
- 
-  @Put(':id')
-  async replacePhone(@Param('id') id: string, @Body() phone: UpdatePhoneDto) {
-    return this.phoneService.replacePhone(Number(id), phone);
-  }
 
   @Patch(':id')
   async updatePhone(@Param('id') id: string, @Body() phone: UpdatePhoneDto) {

@@ -19,15 +19,6 @@ export default class PhonesService {
     throw new HttpException('Phone not found', HttpStatus.NOT_FOUND);
   }
  
-  replacePhone(id: number, phone: UpdatePhoneDto) {
-    const phoneIndex = this.phones.findIndex(phone => phone.id === id);
-    if (phoneIndex > -1) {
-      this.phones[phoneIndex] = phone;
-      return phone;
-    }
-    throw new HttpException('Phone not found', HttpStatus.NOT_FOUND);
-  }
- 
   createPhone(phone: Phone) {
     const newPhone = {
       id: ++this.lastPhoneId,
