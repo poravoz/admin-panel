@@ -1,4 +1,4 @@
-class UpdatePhoneDto {
+export default class UpdatePhoneDto {
     id: string;
     name: string;
     description: string;
@@ -6,4 +6,3 @@ class UpdatePhoneDto {
     date_added: Date;
   }
 
-export default UpdatePhoneDto;
