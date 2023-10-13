@@ -41,8 +41,12 @@ window.onload = async function() {
     });
 
     changeButtons.forEach(button => {
-        button.onclick = function() {
-            window.location.href = `/src/front-end/editAndAdd/edit.html`;
+        button.onclick = function(event) {
+            const id = event.target.dataset.id;
+            const name = encodeURIComponent(event.target.parentElement.parentElement.querySelector('td:nth-child(1)').textContent);
+            const description = encodeURIComponent(event.target.parentElement.parentElement.querySelector('td:nth-child(2)').textContent);
+            const price = encodeURIComponent(event.target.parentElement.parentElement.querySelector('td:nth-child(3)').textContent);
+            window.location.href = `./editAndAdd/edit.html?id=${id}&name=${name}&description=${description}&price=${price}`;
         };
     });
 };
