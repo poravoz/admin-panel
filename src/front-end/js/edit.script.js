@@ -1,6 +1,6 @@
 window.onload = function() {
     document.getElementById('phoneForm').addEventListener('submit', async function(event) {
-        event.preventDefault(); // Предотвращаем стандартное поведение формы
+        event.preventDefault();
 
         const name = document.getElementById('name').value;
         const description = document.getElementById('description').value;
