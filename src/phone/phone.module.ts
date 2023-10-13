@@ -7,4 +7,4 @@ import PhonesService from './phone.service';
   controllers: [PhonesController],
   providers: [PhonesService],
 })
-export class PostsModule {}
+export class PhoneModule {}
