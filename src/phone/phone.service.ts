@@ -13,7 +13,6 @@ export default class PhonesService {
     @InjectRepository(PhoneEntity)
     private phonesRepository: Repository<PhoneEntity>
   ) {}
-  // private phones: Phone[] = [];
  
   async getAllPhones() {
     const phones = await this.phonesRepository.find();
@@ -31,7 +30,7 @@ export default class PhonesService {
   async createPhone(phone: Phone) {
     const newPhone = await this.phonesRepository.create({
       id: uuidv4(),
-      date_added: format (new Date(), 'yyyy-MM-dd'),
+      date_added: format (new Date(), 'yyyy-MM-dd HH:mm:ss'),
       ...phone
     }); 
    
