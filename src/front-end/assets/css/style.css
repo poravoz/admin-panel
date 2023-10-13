@@ -39,3 +39,22 @@
 .phone-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
+.change, .delete {
+    padding: 5px 10px;
+    margin: 2px;
+    cursor: pointer;
+    background-color: green;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.change:hover, .delete:hover {
+    opacity: 0.7;
+}
+
+.change:active, .delete:active {
+    opacity: 0.9;
+}

@@ -13,6 +13,7 @@ window.onload = async function() {
         <th>Description</th>
         <th>Price</th>
         <th>Created At</th>
+        <th>Actions</th>
     `;
     table.appendChild(headerRow);
 
@@ -24,14 +25,39 @@ window.onload = async function() {
             <td>${item.description}</td>
             <td>${item.price}</td>
             <td>${formatDate(item.date_added)}</td>
+            <td>
+                <button class="change" data-id="${item.id}">Change</button>
+                <button class="delete" data-id="${item.id}">Delete</button>
+            </td>
         `;
         table.appendChild(row);
     });
 
     tableContainer.appendChild(table);
+
+    const changeButtons = document.querySelectorAll('.change');
+    const deleteButtons = document.querySelectorAll('.delete');
+
+    changeButtons.forEach(button => {
+        button.addEventListener('click', handleChangeButtonClick);
+    });
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', handleDeleteButtonClick);
+    });
 };
 
 function formatDate(dateString) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-US', options);
+}
+
+function handleChangeButtonClick(event) {
+    const id = event.target.dataset.id;
+    fetch(`http://localhost:3000/phone/${id}`, { method: 'PATCH', });
+}
+
+function handleDeleteButtonClick(event) {
+    const id = event.target.dataset.id;
+    fetch(`http://localhost:3000/phone/${id}`, { method: 'DELETE',});
 }
