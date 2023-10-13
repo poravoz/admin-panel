@@ -55,7 +55,7 @@ function handleDeleteButtonClick(event) {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            alert('Телефон успешно удален');
+            alert('Phone deleted successfully');
         })
         .catch(error => {
             console.error('Error:', error);
