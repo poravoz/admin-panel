@@ -46,7 +46,7 @@ window.onload = function() {
         });
 
         if (response.ok) {
-            alert('Data updated successfully');
+            window.location.href = '../index.html';
         } else {
             alert('An error occurred while updating data');
         }

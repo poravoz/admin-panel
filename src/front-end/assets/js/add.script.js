@@ -43,7 +43,7 @@ window.onload = function() {
             document.getElementById('description').value = '';
             document.getElementById('price').value = '';
   
-            alert('Product added successfully!');
+            window.location.href = '../index.html';
 
         } catch (error) {
             console.error('Error:', error);
