@@ -16,7 +16,11 @@ export default class PhonesService {
  
   async getAllPhones() {
     const phones = await this.phonesRepository.find();
-    return phones.sort((a, b) => a.price - b.price);
+    const formattedPhones = phones.map(phone => ({
+      ...phone,
+      date_added: format(phone.date_added, 'yyyy-MM-dd HH:mm:ss'),
+  }));
+    return formattedPhones.sort((a, b) => a.price - b.price);
   }
  
   async getPhoneById(id: string) {
