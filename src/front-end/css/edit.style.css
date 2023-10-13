@@ -60,6 +60,7 @@ body {
     padding: 16px 64px;
     display: inline-block;
     font-size: 24px;
+    margin-bottom: 25px;
 }
 
 .back:hover {
