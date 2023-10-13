@@ -1,6 +1,6 @@
 window.onload = function() {
     document.getElementById('phoneForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Предотвращаем стандартное поведение формы
 
         const name = document.getElementById('name').value;
         const description = document.getElementById('description').value;
@@ -22,6 +22,12 @@ window.onload = function() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
+
+            document.getElementById('name').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('price').value = '';
+  
+            alert('Product added successfully!');
 
         } catch (error) {
             console.error('Error:', error);
