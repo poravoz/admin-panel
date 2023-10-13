@@ -24,9 +24,12 @@ export default class PhonesService {
   }
  
   async getPhoneById(id: string) {
-    const phone = await this.phonesRepository.findOne({where: {id}});
+    const phone = await this.phonesRepository.findOne({ where: { id } });
     if (phone) {
-      return phone;
+      return {
+        ...phone,
+        date_added: format(phone.date_added, 'yyyy-MM-dd HH:mm:ss'),
+      };
     }
     throw new HttpException('Phone not found', HttpStatus.NOT_FOUND);
   }
@@ -53,7 +56,10 @@ export default class PhonesService {
     await this.phonesRepository.update(id, phone);
     const updatePhone = await this.phonesRepository.findOne({where: {id}});
     if(updatePhone) {
-      return updatePhone;
+      return {
+        ...updatePhone,
+        date_added: format(updatePhone.date_added, 'yyyy-MM-dd HH:mm:ss'),
+      };
     }
     throw new HttpException('Phone not found', HttpStatus.NOT_FOUND);
   }
