@@ -31,6 +31,11 @@ window.onload = function() {
 
         } catch (error) {
             console.error('Error:', error);
+            alert('A product with the same name already exists');
+
+            document.getElementById('name').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('price').value = '';
         }
     });
 };

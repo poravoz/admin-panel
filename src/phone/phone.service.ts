@@ -41,15 +41,21 @@ export default class PhonesService {
   }
  
   async createPhone(phone: Phone) {
+    const existingPhone = await this.phonesRepository.findOne({ where: { name: phone.name } });
+
+    if (existingPhone) {
+      throw new HttpException('A phone with the same name already exists', HttpStatus.CONFLICT);
+    }
+
     const newPhone = await this.phonesRepository.create({
-      id: uuidv4(),
-      date_added: format (new Date(), 'yyyy-MM-dd HH:mm:ss'),
-      ...phone
+        id: uuidv4(),
+        date_added: format (new Date(), 'yyyy-MM-dd HH:mm:ss'),
+        ...phone
     }); 
-   
+
     await this.phonesRepository.save(newPhone);
     return newPhone;
-  }
+}
  
   async deletePhone(id: string) {
     const deletePhone = await this.phonesRepository.delete(id);
