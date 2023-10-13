@@ -1,0 +1,16 @@
+.add {
+    background-color: #222; 
+    border: none;
+    color: white;
+    padding: 16px 64px;
+    display: inline-block;
+    font-size: 24px;
+}
+
+.add:hover {
+    opacity: 0.9;
+}
+
+.add:active {
+    opacity: 0.95;
+}
