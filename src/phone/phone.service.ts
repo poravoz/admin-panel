@@ -3,47 +3,54 @@ import Phone from './interface/phone.interface';
 import UpdatePhoneDto from './dto/updatePhone.dto';
 import { v4 as uuidv4 } from 'uuid';
 import { format } from 'date-fns';
+import { InjectRepository } from '@nestjs/typeorm';
+import PhoneEntity from './entities/phone.entity';
+import { Repository } from 'typeorm';
  
 @Injectable()
 export default class PhonesService {
-  private phones: Phone[] = [];
+  constructor(
+    @InjectRepository(PhoneEntity)
+    private phonesRepository: Repository<PhoneEntity>
+  ) {}
+  // private phones: Phone[] = [];
  
-  getAllPhones() {
-    return this.phones.slice().sort((a, b) => a.price - b.price);
+  async getAllPhones() {
+    const phones = await this.phonesRepository.find();
+    return phones.sort((a, b) => a.price - b.price);
   }
  
-  getPhoneById(id: string) {
-    const phone = this.phones.find(phone => phone.id === id);
+  async getPhoneById(id: string) {
+    const phone = await this.phonesRepository.findOne({where: {id}});
     if (phone) {
       return phone;
     }
     throw new HttpException('Phone not found', HttpStatus.NOT_FOUND);
   }
  
-  createPhone(phone: Phone) {
-    const newPhone = {
+  async createPhone(phone: Phone) {
+    const newPhone = await this.phonesRepository.create({
       id: uuidv4(),
       date_added: format (new Date(), 'yyyy-MM-dd'),
       ...phone
-    }
-    this.phones.push(newPhone);
+    }); 
+   
+    await this.phonesRepository.save(newPhone);
     return newPhone;
   }
  
-  deletePhone(id: string) {
-    const phoneIndex = this.phones.findIndex(phone => phone.id === id);
-    if (phoneIndex > -1) {
-      this.phones.splice(phoneIndex, 1);
-    } else {
+  async deletePhone(id: string) {
+    const deletePhone = await this.phonesRepository.delete(id);
+    if(!deletePhone) {
       throw new HttpException('Phone not found', HttpStatus.NOT_FOUND);
     }
   }
 
-  updatePhone(id: string, phone: UpdatePhoneDto) {
-    const phoneIndex = this.phones.findIndex(p => p.id === id);
-    if (phoneIndex > -1) {
-      this.phones[phoneIndex] = { ...this.phones[phoneIndex], ...phone };
-      return this.phones[phoneIndex];
+  async updatePhone(id: string, phone: UpdatePhoneDto) {
+    await this.phonesRepository.update(id, phone);
+    const updatePhone = await this.phonesRepository.findOne({where: {id}});
+    if(updatePhone) {
+      return updatePhone;
     }
     throw new HttpException('Phone not found', HttpStatus.NOT_FOUND);
   }
