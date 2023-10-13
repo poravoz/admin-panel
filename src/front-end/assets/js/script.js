@@ -41,7 +41,9 @@ window.onload = async function() {
     });
 
     changeButtons.forEach(button => {
-       
+        button.onclick = function() {
+            window.location.href = `/src/front-end/editAndAdd/edit.html`;
+        };
     });
 };
 
