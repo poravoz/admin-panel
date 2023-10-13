@@ -22,7 +22,6 @@ window.onload = function() {
             alert('The price should be between 100 and 150,000 and contain only numbers.');
             return;
         }
-
         try {
             const response = await fetch('http://localhost:3000/phone/', {
                 method: 'POST',
