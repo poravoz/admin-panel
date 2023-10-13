@@ -6,6 +6,8 @@ import { format } from 'date-fns';
 import { InjectRepository } from '@nestjs/typeorm';
 import PhoneEntity from './entities/phone.entity';
 import { Repository } from 'typeorm';
+import { of } from 'rxjs';
+import e from 'express';
  
 @Injectable()
 export default class PhonesService {
@@ -20,8 +22,12 @@ export default class PhonesService {
       ...phone,
       date_added: format(phone.date_added, 'yyyy-MM-dd HH:mm:ss'),
   }));
-    return formattedPhones.sort((a, b) => a.price - b.price);
-  }
+  return formattedPhones.sort((a, b) => { 
+    if(a.name < b.name) return -1;
+    if(a.name > b.name) return 1;
+    return a.price - b.price;
+  });
+}
  
   async getPhoneById(id: string) {
     const phone = await this.phonesRepository.findOne({ where: { id } });
