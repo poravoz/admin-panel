@@ -57,10 +57,10 @@ body {
     background-color: #222; 
     border: none;
     color: white;
-    padding: 16px 64px;
+    padding: 16px 59px;
     display: inline-block;
     font-size: 24px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .back:hover {
