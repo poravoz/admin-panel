@@ -37,7 +37,11 @@ window.onload = async function() {
     const deleteButtons = document.querySelectorAll('.delete');
 
     deleteButtons.forEach(button => {
-        button.addEventListener('click', handleDeleteButtonClick);
+        button.onclick = handleDeleteButtonClick;
+    });
+
+    changeButtons.forEach(button => {
+       
     });
 };
 

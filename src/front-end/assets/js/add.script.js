@@ -1,5 +1,5 @@
 window.onload = function() {
-    document.getElementById('phoneForm').addEventListener('submit', async function(event) {
+    document.getElementById('phoneForm').onsubmit = async function(event) {        
         event.preventDefault();
 
         const name = document.getElementById('name').value;
@@ -53,5 +53,5 @@ window.onload = function() {
             document.getElementById('description').value = '';
             document.getElementById('price').value = '';
         }
-    });
+    };
 };

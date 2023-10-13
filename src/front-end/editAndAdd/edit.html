@@ -7,6 +7,27 @@
     <title>Admin Panel (Edit)</title>
 </head>
 <body>
+    <a href="../index.html"> <button class="back">Back</button> </a>
+
+    <form id="phoneForm" class="form-container">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input required type="text" id="name" name="name" class="form-control">
+        </div>
     
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea required id="description" name="description" class="form-control"></textarea>
+        </div>
+    
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input required type="text" id="price" name="price" class="form-control">
+        </div>
+    
+        <div class="form-group">
+            <input required type="submit" value="Send" class="btn-submit">
+        </div>
+    </form>
 </body>
 </html>
