@@ -6,7 +6,6 @@ window.onload = async function() {
     const table = document.createElement('table');
     table.classList.add('phone-table');
 
-    // Заголовок таблицы
     const headerRow = document.createElement('tr');
     headerRow.innerHTML = `
         <th>Name</th>
@@ -17,7 +16,6 @@ window.onload = async function() {
     `;
     table.appendChild(headerRow);
 
-    // Добавление данных
     data.forEach(item => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -38,10 +36,6 @@ window.onload = async function() {
     const changeButtons = document.querySelectorAll('.change');
     const deleteButtons = document.querySelectorAll('.delete');
 
-    changeButtons.forEach(button => {
-        button.addEventListener('click', handleChangeButtonClick);
-    });
-
     deleteButtons.forEach(button => {
         button.addEventListener('click', handleDeleteButtonClick);
     });
@@ -52,12 +46,19 @@ function formatDate(dateString) {
     return new Date(dateString).toLocaleDateString('en-US', options);
 }
 
-function handleChangeButtonClick(event) {
-    const id = event.target.dataset.id;
-    fetch(`http://localhost:3000/phone/${id}`, { method: 'PATCH', });
-}
-
 function handleDeleteButtonClick(event) {
     const id = event.target.dataset.id;
-    fetch(`http://localhost:3000/phone/${id}`, { method: 'DELETE',});
-}
+
+    event.target.parentElement.parentElement.remove();
+    fetch(`http://localhost:3000/phone/${id}`, { method: 'DELETE' })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            alert('Телефон успешно удален');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while deleting the phone');
+        });
+    }
