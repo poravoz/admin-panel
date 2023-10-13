@@ -16,26 +16,32 @@
 </head>
 <body>
 
-    <form class="form-container">
+    <form id="phoneForm" class="form-container">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" class="form-control">
         </div>
-
+    
         <div class="form-group">
             <label for="description">Description:</label>
             <textarea id="description" name="description" class="form-control"></textarea>
         </div>
-
+    
         <div class="form-group">
             <label for="price">Price:</label>
             <input type="text" id="price" name="price" class="form-control">
         </div>
-
+    
         <div class="form-group">
             <input type="submit" value="Send" class="btn-submit">
         </div>
+
+        <div id="successMessage" class="successMessage">Товар успешно добавлен!</div>
     </form>
 
+
+
+
+    <script src="../js/edit.script.js"></script>
 </body>
 </html>

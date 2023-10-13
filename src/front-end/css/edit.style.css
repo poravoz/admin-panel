@@ -19,6 +19,9 @@ body {
     display: block;
     width: 100%;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .form-group textarea {
@@ -48,4 +51,13 @@ body {
 
 .form-group input[type="submit"]:active {
     opacity: 0.95;
+}
+
+.successMessage {
+    display:none; 
+    background-color: #222; 
+    color: white; 
+    padding: 10px; 
+    text-align: center; 
+    margin-bottom: 10px;
 }
