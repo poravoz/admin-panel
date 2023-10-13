@@ -52,3 +52,20 @@ body {
 .form-group input[type="submit"]:active {
     opacity: 0.95;
 }
+
+.back {
+    background-color: #222; 
+    border: none;
+    color: white;
+    padding: 16px 64px;
+    display: inline-block;
+    font-size: 24px;
+}
+
+.back:hover {
+    opacity: 0.9;
+}
+
+.back:active {
+    opacity: 0.95;
+}
